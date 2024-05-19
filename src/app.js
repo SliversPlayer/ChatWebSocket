@@ -23,4 +23,8 @@ let messages = []
 
 socketServer.on('connection', socket => {
     console.log("Nuevo cliente conectado");
+    socket.on("message", data=>{
+        messages.push(data)
+        socketServer.emit("messageLogs", messages)
+    })
 })
